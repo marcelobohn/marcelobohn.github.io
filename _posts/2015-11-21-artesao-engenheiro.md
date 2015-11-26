@@ -2,7 +2,8 @@
 layout: post
 title:  "Engenheiro x Artesão"
 date:   2015-11-21 16:00:00
-categories: engineering quality
+category: dev
+tags: [engineering, quality]
 ---
 
 Refletindo sobre qualidade de software, cheguei a um ponto interessante de reflexão, podemos ter duas visões no momento de construir um software. A primeira seria de um artesão pegar a matéria prima logo botar a mão na massa para ir transformando conforme a necessidade o objetivo é o produto final bonito e não se importando se por de baixo da tinta tem remendo bem grande, por que do mesmo isso não aparece para o cliente. A segunda é do engenheiro, que vai planejar, as peças vão ter que se encaixar com perfeição, deve ser seguido um padrão rígido na produção das peças e terá um padrão de qualidade no produto final.

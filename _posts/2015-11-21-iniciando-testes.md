@@ -2,7 +2,8 @@
 layout: post
 title:  "Iniciando testes unitários"
 date:   2015-11-21 17:30:00
-categories: quality php phpunit tests
+category: dev
+tags: [quality, php, phpunit, tests]
 ---
 
 Essa semana começei a implementar os primeiros testes unitários no projeto que trabalho, é foi construido com PHP e Zend Framework, então o caminho foi PHPUnit. O projeto não foi iniciado pela empresa que trabalho, mas com mais de um ano dado manutenção no mesmo, passei a acreditar que seria possível encontrar um caminho melhor para algumas coisas.
