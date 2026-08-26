@@ -52,12 +52,6 @@ acompanhar o que sai do papel, com API em TypeScript e front em Vue 3.</p>
 GitHub</a>: ferramentas pequenas, experimentos de infraestrutura e prática de
 linguagem.</p>
 
-<h2 id="escrita">Escrita</h2>
-
-<p>Em novembro de 2015 escrevi três textos sobre qualidade de software e testes
-unitários. Não escrevo desde então, mas eles continuam de pé —
-<a href="{{ '/escrita/' | relative_url }}">estão aqui</a>.</p>
-
 <h2 id="contato">Contato</h2>
 
 <ul class="contato">
