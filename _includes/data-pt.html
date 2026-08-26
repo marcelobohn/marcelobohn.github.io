@@ -1,0 +1,7 @@
+{%- comment -%}
+  O filtro `date` do Liquid so conhece meses em ingles. Recebe `data` e devolve
+  "25 de novembro de 2015".
+{%- endcomment -%}
+{%- assign meses = "janeiro,fevereiro,marco,abril,maio,junho,julho,agosto,setembro,outubro,novembro,dezembro" | replace: "marco", "março" | split: "," -%}
+{%- assign mes = include.data | date: "%-m" | minus: 1 -%}
+{{- include.data | date: "%-d" }} de {{ meses[mes] }} de {{ include.data | date: "%Y" -}}

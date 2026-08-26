@@ -1,15 +1,16 @@
 # Site settings
-title: Marcelo Bohn Blog
+title: Marcelo Bohn
 email: marcelo.bohn@gmail.com
 description: 
-  Blog de tecnologia de desenvolvimento de sistemas
+  Engenheiro de software. Há mais de 20 anos construindo sistemas.
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://marcelobohn.github.io/" # the base hostname & protocol for your site
-twitter_username: marcelobohn
+url: "https://marcelobohn.github.io" # the base hostname & protocol for your site
 github_username:  marcelobohn
 
 # Build settings
 markdown: kramdown
+lang: pt-BR
+timezone: America/Sao_Paulo
 
 # O github-pages minificava o CSS por padrao; o Jekyll 4 sozinho, nao.
 sass:

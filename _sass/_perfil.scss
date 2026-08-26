@@ -1,0 +1,57 @@
+@use "variables" as *;
+
+/**
+ * Perfil — a home deixou de ser lista de posts.
+ */
+.perfil__linha {
+    font-size: 20px;
+    color: $grey-color-dark;
+}
+
+.perfil h2 {
+    margin-top: $spacing-unit;
+    font-size: 22px;
+}
+
+.perfil__nota {
+    font-size: $small-font-size;
+    color: $grey-color;
+}
+
+// Uma linha por emprego: periodo a esquerda, cargo e descricao a direita.
+.trajetoria {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: $spacing-unit;
+
+    td {
+        padding: 8px 0;
+        vertical-align: top;
+        border-bottom: 1px solid $grey-color-light;
+    }
+
+    td:first-child {
+        white-space: nowrap;
+        padding-right: $spacing-unit;
+        color: $grey-color;
+        font-size: $small-font-size;
+    }
+
+    span {
+        display: block;
+        color: $grey-color;
+        font-size: $small-font-size;
+    }
+
+    // No celular a coluna de datas nao cabe ao lado: vira uma linha acima.
+    @include media-query($on-palm) {
+        td, td:first-child { display: block; border: 0; padding: 0; }
+        td:first-child { padding-top: 12px; }
+        tr { display: block; border-bottom: 1px solid $grey-color-light; padding-bottom: 8px; }
+    }
+}
+
+.contato {
+    list-style: none;
+    margin-left: 0;
+}
