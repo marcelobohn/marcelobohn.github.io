@@ -1,240 +1,118 @@
-@use "sass:math";
 @use "variables" as *;
-@use "base";
 
 /**
- * Site header
+ * Coluna de leitura, cabecalho e rodape.
+ */
+.wrapper {
+    max-width: $largura-leitura;
+    margin: 0 auto;
+    padding: 0 $respiro * 0.75;
+}
+
+/**
+ * Cabecalho: nome a esquerda, navegacao a direita, regua fina embaixo.
  */
 .site-header {
-    border-top: 5px solid $grey-color-dark;
-    border-bottom: 1px solid $grey-color-light;
-    min-height: 56px;
+    border-bottom: 1px solid var(--regua);
+    padding: $respiro * 0.7 0;
+}
 
-    // Positioning context for the mobile navigation icon
-    position: relative;
+.site-header .wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: $respiro * 0.5;
 }
 
 .site-title {
-    font-size: 26px;
-    line-height: 56px;
-    letter-spacing: -1px;
-    margin-bottom: 0;
-    float: left;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+    color: var(--tinta);
+    border: 0;
 
-    &,
-    &:visited {
-        color: $grey-color-dark;
-    }
+    &:hover { color: var(--azul); }
 }
 
 .site-nav {
-    float: right;
-    line-height: 56px;
-
-    .menu-icon {
-        display: none;
-    }
+    display: flex;
+    gap: $respiro * 0.6;
 
     .page-link {
-        color: $text-color;
-        line-height: $base-line-height;
+        font-size: 15px;
+        color: var(--tinta-fraca);
+        border: 0;
 
-        // Gaps between nav items, but not on the first one
-        &:not(:first-child) {
-            margin-left: 20px;
-        }
-    }
-
-    @include media-query($on-palm) {
-        position: absolute;
-        top: 9px;
-        right: 30px;
-        background-color: $background-color;
-        border: 1px solid $grey-color-light;
-        border-radius: 5px;
-        text-align: right;
-
-        .menu-icon {
-            display: block;
-            float: right;
-            width: 36px;
-            height: 26px;
-            line-height: 0;
-            padding-top: 10px;
-            text-align: center;
-
-            > svg {
-                width: 18px;
-                height: 15px;
-
-                path {
-                    fill: $grey-color-dark;
-                }
-            }
-        }
-
-        .trigger {
-            clear: both;
-            display: none;
-        }
-
-        &:hover .trigger {
-            display: block;
-            padding-bottom: 5px;
-        }
-
-        .page-link {
-            display: block;
-            padding: 5px 10px;
-        }
+        &:hover { color: var(--azul); }
     }
 }
 
-
+.page-content {
+    padding: $respiro * 1.8 0 $respiro * 2.5;
+}
 
 /**
- * Site footer
+ * Rodape: uma linha discreta. O contato de verdade esta na home.
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
-    padding: $spacing-unit 0;
-}
+    border-top: 1px solid var(--regua);
+    padding: $respiro * 0.8 0;
+    font-size: 14px;
+    color: var(--tinta-fraca);
 
-.footer-heading {
-    font-size: 18px;
-    margin-bottom: math.div($spacing-unit, 2);
-}
-
-.contact-list,
-.social-media-list {
-    list-style: none;
-    margin-left: 0;
-}
-
-.footer-col-wrapper {
-    font-size: 15px;
-    color: $grey-color;
-    margin-left: math.div(-$spacing-unit, 2);
-    @extend %clearfix;
-}
-
-.footer-col {
-    float: left;
-    margin-bottom: math.div($spacing-unit, 2);
-    padding-left: math.div($spacing-unit, 2);
-}
-
-.footer-col-1 {
-    width: -webkit-calc(35% - (#{$spacing-unit} / 2));
-    width:         calc(35% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-2 {
-    width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-    width:         calc(20% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-3 {
-    width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-    width:         calc(45% - (#{$spacing-unit} / 2));
-}
-
-@include media-query($on-laptop) {
-    .footer-col-1,
-    .footer-col-2 {
-        width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-        width:         calc(50% - (#{$spacing-unit} / 2));
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        gap: $respiro * 0.5;
+        flex-wrap: wrap;
     }
 
-    .footer-col-3 {
-        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width:         calc(100% - (#{$spacing-unit} / 2));
-    }
+    a { color: var(--tinta-fraca); border-bottom-color: var(--regua); }
+    a:hover { color: var(--azul); }
 }
-
-@include media-query($on-palm) {
-    .footer-col {
-        float: none;
-        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width:         calc(100% - (#{$spacing-unit} / 2));
-    }
-}
-
-
 
 /**
- * Page content
+ * Paginas e posts.
  */
-.page-content {
-    padding: $spacing-unit 0;
+.page-heading, .post-title {
+    font-size: 34px;
+    margin-bottom: $respiro * 0.5;
+
+    @include ate($no-celular) { font-size: 27px; }
 }
 
-.page-heading {
-    font-size: 20px;
-}
-
-.post-list {
-    margin-left: 0;
-    list-style: none;
-
-    > li {
-        margin-bottom: $spacing-unit;
-    }
-}
+.post-header { margin-bottom: $respiro; }
 
 .post-meta {
-    font-size: $small-font-size;
-    color: $grey-color;
-}
-
-.post-link {
-    display: block;
-    font-size: 24px;
-}
-
-
-
-/**
- * Posts
- */
-.post-header {
-    margin-bottom: $spacing-unit;
-}
-
-.post-title {
-    font-size: 42px;
-    letter-spacing: -1px;
-    line-height: 1;
-
-    @include media-query($on-laptop) {
-        font-size: 36px;
-    }
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--tinta-fraca);
 }
 
 .post-content {
-    margin-bottom: $spacing-unit;
-
-    h2 {
-        font-size: 32px;
-
-        @include media-query($on-laptop) {
-            font-size: 28px;
-        }
-    }
-
-    h3 {
-        font-size: 26px;
-
-        @include media-query($on-laptop) {
-            font-size: 22px;
-        }
-    }
-
-    h4 {
-        font-size: 20px;
-
-        @include media-query($on-laptop) {
-            font-size: 18px;
-        }
-    }
+    h2 { font-size: 24px; margin: $respiro 0 $respiro * 0.4; }
+    h3 { font-size: 20px; margin: $respiro * 0.8 0 $respiro * 0.3; }
 }
+
+/**
+ * Lista de textos em /escrita/.
+ */
+.post-list {
+    list-style: none;
+    margin-left: 0;
+
+    > li {
+        padding: $respiro * 0.6 0;
+        border-bottom: 1px solid var(--regua);
+
+        &:last-child { border-bottom: 0; }
+    }
+
+    h2 { font-size: 20px; margin: 4px 0 0; }
+}
+
+.post-link { border: 0; }
+.post-list h2 a:hover { color: var(--azul-forte); }
+
+.rss-subscribe { font-size: 14px; color: var(--tinta-fraca); }

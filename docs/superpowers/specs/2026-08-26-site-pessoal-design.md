@@ -92,4 +92,25 @@ tratada em separado.
 - [ ] A home nao repete a lista de repositorios do README do perfil.
 - [ ] Nenhum fato biografico escrito sem origem declarada pelo Marcelo.
 - [ ] Build sem avisos, deploy verde pelo Actions.
-- [ ] Nenhum recurso externo novo (mesma regra do README do perfil).
+- [ ] Contraste WCAG AA (4.5:1) em texto de corpo, nos dois temas.
+
+## Revisao de 2026-08-26 — camada visual
+
+O layout era o tema padrao do `jekyll new`. Direcao escolhida: editorial
+sobrio, com os tokens do site da Ilumina (`ilumina.app.br`, `src/style.css`)
+para que os dois enderecos pertencam a mesma familia — Space Grotesk, IBM Plex
+Sans e IBM Plex Mono, mais o azul e a tinta dela.
+
+Herdado: familias, cor, tinta e fundo. **Nao herdado**: pilula de raio 100px,
+sombra azul com brilho e cartoes — a linguagem de quem vende. Aqui o registro e
+de leitura, coerente com "o estudio vende, a pessoa da lastro".
+
+Isto revoga o criterio "nenhum recurso externo novo": o Marcelo optou pelas
+fontes do Google, cientes do custo. Mitigado com `display=swap` e pilha de
+fallback real em cada familia — falha do Google troca a fonte, nunca esconde o
+texto.
+
+O `--blue` da Ilumina (#2f6bff) da 4.35:1 sobre fundo claro, abaixo do minimo
+de 4.5:1 para texto de corpo. No claro entra o `--blue-hover` dela (#1f56e0,
+5.86:1); no escuro, o `--blue-lt` (#6da0ff, 7.36:1). A paleta continua sendo a
+dela — muda so qual tom ocupa qual papel.

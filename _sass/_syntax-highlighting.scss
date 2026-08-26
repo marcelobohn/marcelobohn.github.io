@@ -1,12 +1,11 @@
 @use "variables" as *;
-@use "base";
 
 /**
  * Syntax highlighting styles
  */
 .highlight {
-    background: #fff;
-    @extend %vertical-rhythm;
+    background: var(--realce);
+    margin-bottom: 20px;
 
     .c     { color: #998; font-style: italic } // Comment
     .err   { color: #a61717; background-color: #e3d2d2 } // Error

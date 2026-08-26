@@ -1,28 +1,12 @@
-// Variaveis e o mixin de media query, compartilhados pelos demais parciais.
-$base-font-family: Helvetica, Arial, sans-serif;
-$base-font-size:   16px;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+// Medidas que precisam existir em tempo de compilacao. As cores e as fontes
+// ficam em custom properties no _base.scss, para o modo escuro poder troca-las.
 
-$spacing-unit:     30px;
+$largura-leitura: 680px;
+$respiro:         32px;
 
-$text-color:       #111;
-$background-color: #fdfdfd;
-$brand-color:      #2a7ae2;
-$brand-color-dark: #1756a9;  // era darken($brand-color, 15%)
+$no-celular:      600px;
+$no-notebook:     800px;
 
-$grey-color:       #828282;
-$grey-color-light: #e8e8e8;  // era lighten($grey-color, 40%)
-$grey-color-dark:  #424242;  // era darken($grey-color, 25%)
-
-// Largura da area de conteudo
-$content-width:    800px;
-
-$on-palm:          600px;
-$on-laptop:        800px;
-
-@mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
-    }
+@mixin ate($largura) {
+    @media screen and (max-width: $largura) { @content; }
 }

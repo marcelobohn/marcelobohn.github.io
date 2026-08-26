@@ -1,207 +1,114 @@
-@use "sass:math";
 @use "variables" as *;
 
 /**
- * Reset some basic elements
+ * Tokens herdados do site da Ilumina (`src/style.css`): mesmas familias, mesmo
+ * azul, mesma tinta. O que nao foi herdado sao os componentes de venda — pilula
+ * de raio 100px, sombra azul com brilho, cartao. La e vitrine; aqui e leitura.
  */
-body, h1, h2, h3, h4, h5, h6,
-p, blockquote, pre, hr,
-dl, dd, ol, ul, figure {
+:root {
+    // O --blue da Ilumina (#2f6bff) da 4.35:1 sobre este fundo — abaixo do
+    // minimo de 4.5:1 para texto de corpo. Entra o --blue-hover dela, que ja
+    // esta na paleta e da 5.86:1.
+    --azul:        #1f56e0;
+    --azul-forte:  #173fae;
+    --tinta:       #111318;
+    --tinta-fraca: #5b6270;
+    --fundo:       #fbfbfc;
+    --regua:       #e4e6ec;
+    --realce:      #eef2ff;
+
+    --display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+    --corpo:   'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    --mono:    'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+// O #2f6bff da Ilumina nao tem contraste suficiente sobre fundo escuro; no
+// escuro entra o --blue-lt que ela ja usa para hover.
+@media (prefers-color-scheme: dark) {
+    :root {
+        --azul:        #6da0ff;
+        --azul-forte:  #9dbcff;
+        --tinta:       #e7e9f0;
+        --tinta-fraca: #979eae;
+        --fundo:       #0e1014;
+        --regua:       #232733;
+        --realce:      #161a24;
+    }
+}
+
+* { box-sizing: border-box; }
+
+body, h1, h2, h3, h4, p, blockquote, pre, hr, ol, ul, figure {
     margin: 0;
     padding: 0;
 }
 
-
-
-/**
- * Basic styling
- */
 body {
-    font-family: $base-font-family;
-    font-size: $base-font-size;
-    line-height: $base-line-height;
-    font-weight: 300;
-    color: $text-color;
-    background-color: $background-color;
+    font-family: var(--corpo);
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--tinta);
+    background-color: var(--fundo);
     -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
-
-
-/**
- * Set `margin-bottom` to maintain vertical rhythm
- */
-h1, h2, h3, h4, h5, h6,
-p, blockquote, pre,
-ul, ol, dl, figure,
-%vertical-rhythm {
-    margin-bottom: math.div($spacing-unit, 2);
+h1, h2, h3, h4 {
+    font-family: var(--display);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
 }
 
+p, ul, ol, blockquote, pre, figure { margin-bottom: $respiro * 0.6; }
 
-
-/**
- * Images
- */
-img {
-    max-width: 100%;
-    vertical-align: middle;
-}
-
-
-
-/**
- * Figures
- */
-figure > img {
-    display: block;
-}
-
-figcaption {
-    font-size: $small-font-size;
-}
-
-
-
-/**
- * Lists
- */
-ul, ol {
-    margin-left: $spacing-unit;
-}
-
-li {
-    > ul,
-    > ol {
-         margin-bottom: 0;
-    }
-}
-
-
-
-/**
- * Headings
- */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 300;
-}
-
-
-
-/**
- * Links
- */
 a {
-    color: $brand-color;
+    color: var(--azul);
     text-decoration: none;
-
-    &:visited {
-        color: $brand-color-dark;
-    }
+    // Sublinhado fino que nao encosta nas descidas das letras.
+    border-bottom: 1px solid color-mix(in srgb, var(--azul) 35%, transparent);
+    transition: color .15s, border-color .15s;
 
     &:hover {
-        color: $text-color;
-        text-decoration: underline;
+        color: var(--azul-forte);
+        border-bottom-color: currentColor;
     }
 }
 
+strong { font-weight: 600; }
 
+img { max-width: 100%; vertical-align: middle; }
 
-/**
- * Blockquotes
- */
 blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
-    padding-left: math.div($spacing-unit, 2);
-    font-size: 18px;
-    letter-spacing: -1px;
+    color: var(--tinta-fraca);
+    border-left: 2px solid var(--regua);
+    padding-left: $respiro * 0.6;
     font-style: italic;
 
-    > :last-child {
-        margin-bottom: 0;
-    }
+    > :last-child { margin-bottom: 0; }
 }
 
-
-
-/**
- * Code formatting
- */
-pre,
-code {
-    font-size: 15px;
-    border: 1px solid $grey-color-light;
-    border-radius: 3px;
-    background-color: #eef;
+pre, code {
+    font-family: var(--mono);
+    font-size: 14px;
+    background-color: var(--realce);
+    border-radius: 4px;
 }
 
-code {
-    padding: 1px 5px;
-}
+code { padding: 2px 6px; }
 
 pre {
-    padding: 8px 12px;
-    overflow-x: scroll;
+    padding: 14px 16px;
+    overflow-x: auto;
 
-    > code {
-        border: 0;
-        padding-right: 0;
-        padding-left: 0;
-    }
+    > code { border: 0; padding: 0; background: none; }
 }
 
+ul, ol { margin-left: $respiro * 0.7; }
 
-
-/**
- * Wrapper
- */
-.wrapper {
-    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
-    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
-    margin-right: auto;
-    margin-left: auto;
-    padding-right: $spacing-unit;
-    padding-left: $spacing-unit;
-    @extend %clearfix;
-
-    @include media-query($on-laptop) {
-        max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
-        max-width:         calc(#{$content-width} - (#{$spacing-unit}));
-        padding-right: math.div($spacing-unit, 2);
-        padding-left: math.div($spacing-unit, 2);
-    }
-}
-
-
-
-/**
- * Clearfix
- */
-%clearfix {
-
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-}
-
-
-
-/**
- * Icons
- */
-.icon {
-
-    > svg {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        vertical-align: middle;
-
-        path {
-            fill: $grey-color;
-        }
-    }
+hr {
+    border: 0;
+    border-top: 1px solid var(--regua);
+    margin: $respiro 0;
 }
