@@ -10,3 +10,8 @@ github_username:  marcelobohn
 
 # Build settings
 markdown: kramdown
+
+# O github-pages minificava o CSS por padrao; o Jekyll 4 sozinho, nao.
+sass:
+  style: compressed
+  sourcemap: never
